@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -8,21 +9,25 @@ public class Main {
     public static void main(String[] args) {
 
         List<User> users = new ArrayList<>();
-        users.add(new User("User1", 12));
+        users.add(new User("User1", 19));
         users.add(new User("User2", 26));
         users.add(new User("User3", 38));
         users.add(new User("User4", 24));
         users.add(new User("User5", 47));
-        users.add(new User("User6", 18));
+        users.add(new User("User6", 19));
         users.add(new User("User7", 56));
         users.add(new User("User8", 63));
 
-        long count = users.stream()
-                .filter(user -> user.getAge() > 30)
-                .count();
+        List<User> sorted = users.stream()
+                //.filter(user -> user.getAge() > 30)
+                //.noneMatch(user -> user.getAge() <= 18);
+                .sorted((o1, o2) -> Integer.compare(o2.getAge(), o1.getAge()))
+                .limit(3)
+                .toList();
 
-        System.out.println(count);
-
+        for (User user : sorted) {
+            System.out.println(user);
+        }
 
         //Task_1
         /*
