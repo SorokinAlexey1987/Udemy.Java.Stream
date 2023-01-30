@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -18,16 +19,18 @@ public class Main {
         users.add(new User("User7", 56));
         users.add(new User("User8", 63));
 
-        List<User> sorted = users.stream()
+        users.stream()
                 //.filter(user -> user.getAge() > 30)
                 //.noneMatch(user -> user.getAge() <= 18);
-                .sorted((o1, o2) -> Integer.compare(o2.getAge(), o1.getAge()))
+                //.sorted((o1, o2) -> Integer.compare(o2.getAge(), o1.getAge()))
+                //.limit(3)
+                //.forEach(System.out::println);
+                .sorted(Comparator.comparing(User::getName))
+                .filter(user -> user.getAge() < 40)
                 .limit(3)
-                .toList();
+                .map(User::getName)
+                .forEach(System.out::println);
 
-        for (User user : sorted) {
-            System.out.println(user);
-        }
 
         //Task_1
         /*
