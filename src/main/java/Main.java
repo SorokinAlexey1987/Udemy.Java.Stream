@@ -6,6 +6,25 @@ import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
+
+        List<User> users = new ArrayList<>();
+        users.add(new User("User1", 12));
+        users.add(new User("User2", 26));
+        users.add(new User("User3", 38));
+        users.add(new User("User4", 24));
+        users.add(new User("User5", 47));
+        users.add(new User("User6", 18));
+        users.add(new User("User7", 56));
+        users.add(new User("User8", 63));
+
+        long count = users.stream()
+                .filter(user -> user.getAge() > 30)
+                .count();
+
+        System.out.println(count);
+
+
+        //Task_1
         /*
         //new Thread(() -> System.out.println(1)).start();
         Director director = new Director();
@@ -19,7 +38,8 @@ public class Main {
         System.out.println(result);
         */
 
-
+        ////Task_2
+        /*
         List<Integer> numbers = new ArrayList<>();
         for (int i = 0; i < 100; i++) {
             numbers.add((int) (Math.random() * 100 + 100));
@@ -34,6 +54,7 @@ public class Main {
         for (String s : result) {
             System.out.println(s);
         }
+        */
     }
 
     private static List<String> map(List<Integer> numbers) {
