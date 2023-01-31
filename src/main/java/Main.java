@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -19,17 +20,26 @@ public class Main {
         users.add(new User("User7", 56));
         users.add(new User("User8", 63));
 
-        users.stream()
-                //.filter(user -> user.getAge() > 30)
-                //.noneMatch(user -> user.getAge() <= 18);
-                //.sorted((o1, o2) -> Integer.compare(o2.getAge(), o1.getAge()))
-                //.limit(3)
-                //.forEach(System.out::println);
+        Optional<User> oldest = users.stream()
+                //.filter(user -> user.getAge() < 5)
+                .max(Comparator.comparingInt(User::getAge));
+
+        oldest.ifPresentOrElse(System.out::println, () -> System.out.println("User not found"));
+
+                /*
+                .filter(user -> user.getAge() > 30)
+                .noneMatch(user -> user.getAge() <= 18);
+                .sorted((o1, o2) -> Integer.compare(o2.getAge(), o1.getAge()))
+                .limit(3)
+                .forEach(System.out::println);
+                */
+                /*
                 .sorted(Comparator.comparing(User::getName))
                 .filter(user -> user.getAge() < 40)
                 .limit(3)
                 .map(User::getName)
                 .forEach(System.out::println);
+                */
 
 
         //Task_1
