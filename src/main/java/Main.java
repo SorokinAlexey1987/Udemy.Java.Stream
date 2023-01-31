@@ -7,7 +7,21 @@ import java.util.stream.Stream;
 
 public class Main {
     public static void main(String[] args) {
+        //Task_7
+        List<Float> numbers = new ArrayList<>();
+        for (int i = 0; i < 30_000_000; i++) {
+            numbers.add((float) i);
+        }
+        long before = System.currentTimeMillis();
+        numbers.parallelStream()
+                .map(number -> Math.sin(0.2f + number / 5))
+                .collect(Collectors.toList());
+        long after = System.currentTimeMillis();
+        System.out.println(after - before);
 
+
+        //Task_6
+        /*
         List<User> users = new ArrayList<>();
         users.add(new User("User1", 19));
         users.add(new User("User2", 26));
@@ -31,14 +45,16 @@ public class Main {
                 .filter(user -> user.getName().contains("s"))
                 .findFirst()
                 .ifPresentOrElse(System.out::println, () -> System.out.println("User not found"));
+        */
 
-
+        //Task_5
         /*
                 .filter(user -> user.getAge() < 5)
                 .max(Comparator.comparingInt(User::getAge));
         oldest.ifPresentOrElse(System.out::println, () -> System.out.println("User not found"));
         */
 
+        //Task_4
                 /*
                 .filter(user -> user.getAge() > 30)
                 .noneMatch(user -> user.getAge() <= 18);
@@ -46,6 +62,7 @@ public class Main {
                 .limit(3)
                 .forEach(System.out::println);
                 */
+        //Task_3
                 /*
                 .sorted(Comparator.comparing(User::getName))
                 .filter(user -> user.getAge() < 40)
@@ -69,7 +86,7 @@ public class Main {
         System.out.println(result);
         */
 
-        ////Task_2
+        //Task_2
         /*
         List<Integer> numbers = new ArrayList<>();
         for (int i = 0; i < 100; i++) {
