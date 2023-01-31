@@ -1,11 +1,9 @@
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Main {
     public static void main(String[] args) {
@@ -19,6 +17,15 @@ public class Main {
         users.add(new User("User6", 19));
         users.add(new User("User7", 56));
         users.add(new User("User8", 63));
+
+        int[] array = {3, 2, 4, 1, 5};
+        int[] array2 = {0, 0, 0, 0, 0};
+        //Stream.of(3, 2, 4, 1, 5)
+        Arrays.stream(array).filter(n -> n > 2);
+        array2 = Arrays.stream(array).toArray();
+        for (int i = 0; i < 5; i++) {
+            System.out.println("Array2 = " + array2[i]);
+        }
 
         users.stream()
                 .filter(user -> user.getName().contains("s"))
