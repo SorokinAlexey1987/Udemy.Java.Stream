@@ -20,8 +20,8 @@ public class Main {
         System.out.println(after - before);
 
 
-        //Task_6
-        /*
+        /*Task_6
+
         List<User> users = new ArrayList<>();
         users.add(new User("User1", 19));
         users.add(new User("User2", 26));
@@ -122,6 +122,4 @@ public class Main {
         }
         return result;
     }
-
-
 }
